@@ -4,19 +4,23 @@ import random
 from src.available_books import available_books
 from src.borrowed_books import borrowed_books
 
+mutex = threading.Lock()
+
 def search_available_books(isbn, result, role):
-    time.sleep(random.uniform(0.1, 0.3))  # Simula tempo de pesquisa
-    if isbn in available_books:
-        result[role] = available_books[isbn]
-    else:
-        result[role] = None
+    time.sleep(random.uniform(0.1, 0.3)) 
+    with mutex:
+        if isbn in available_books:
+            result[role] = available_books[isbn]
+        else:
+            result[role] = None
 
 def search_borrowed_books(isbn, result, role):
-    time.sleep(random.uniform(0.1, 0.3))  # Simula tempo de pesquisa
-    if isbn in borrowed_books:
-        result[role] = borrowed_books[isbn]
-    else:
-        result[role] = None
+    time.sleep(random.uniform(0.1, 0.3))
+    with mutex:
+        if isbn in borrowed_books:
+            result[role] = borrowed_books[isbn]
+        else:
+            result[role] = None
 
 def search_book(isbn):
     result = {"bibliotecária": None, "gerente": None}
