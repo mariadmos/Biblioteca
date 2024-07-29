@@ -1,0 +1,3 @@
+Problema: Pesquisa Simultânea em uma Biblioteca
+Descrição:
+Em uma biblioteca, tanto a bibliotecária quanto o gerente precisam pesquisar informações sobre um livro específico. A bibliotecária vai pesquisar no banco de dados de livros disponíveis, enquanto o gerente vai pesquisar no banco de dados de livros emprestados. Queremos que ambas as pesquisas ocorram simultaneamente usando threads e que, ao final, possamos combinar os resultados.
